@@ -1,0 +1,305 @@
+﻿
+
+@{
+    ViewData["Title"] = "Home Page";
+    Signal[] signals = HMI.Controllers.HomeController.signals;
+    int currentGroup = -1;
+
+}
+
+
+@for (int i = 0; i < signals.Length; i++)
+{
+    @if (signals[i].Label != null)
+    {
+        <div style="margin-bottom:3px"><u><strong>@signals[i].Label</strong></u></div>
+        <br />
+    }
+
+    if (signals[i].signalGroup > 0)
+    {
+
+        currentGroup = signals[i].signalGroup;
+        @using (Html.BeginForm("SetValues", "Home", FormMethod.Post))
+        {
+            var buttonName = "";
+            @for (int j = 0; j < signals.Length - i; j++)
+            {
+
+                if (signals[j + i].Type == "string")
+                {
+
+                    <td style="margin-top:10px">
+                        @{ string _id = "variableNames[" + @j.ToString() + "]";}
+                        <input name=@_id type="hidden" title="@signals[j + i].Name" value="@signals[j + i].Key" />
+                        @{ _id = "types[" + @j.ToString() + "]";}
+                        <input name=@_id type="hidden" title="@signals[j + i].Name" value="@signals[j + i].Type" />
+                        <div class="row" style="margin-top:10px">
+                            <div class="col-3">
+                                <strong>@signals[j + i].Name: </strong>
+                            </div>
+                            @if (signals[j + i].AllowedValues != null)
+                            {
+
+                                List<SelectListItem> list = new List<SelectListItem>();
+                                foreach (var pair in signals[j + i].AllowedValues)
+                                {
+                                    list.Add(new SelectListItem()
+                                    {
+                                        Text = pair.Key,
+                                        Value = pair.Value,
+                                        Selected = pair.Value == signals[j + i].stringValue
+                                    });
+                                }
+
+                                <div class="col-3">
+                                    @{ _id = "values[" + @j.ToString() + "]";}
+                                    @Html.DropDownList(_id, list, new { @name = _id, @class = "form-control", @value = @signals[j + i].stringValue })
+                                </div>
+                            }
+                            else
+                            {
+
+                                <div class="col-3">
+                                    @{ _id = "values[" + @j.ToString() + "]";}
+                                    <input style="width: 100%;" name=@_id type="text" class="form-control" title="@signals[j + i].Name" value="@signals[j + i].stringValue" />
+                                </div>
+                            }
+
+                        </div>
+
+
+                    </td>
+                }
+                else if (signals[j + i].Type == "ushort")
+                {
+                    <td style="margin-top:10px">
+                        @{ string _id = "variableNames[" + @j.ToString() + "]";}
+                        <input name=@_id type="hidden" title="@signals[j + i].Name" value="@signals[j + i].Key" />
+                        @{ _id = "types[" + @j.ToString() + "]";}
+                        <input name=@_id type="hidden" title="@signals[j + i].Name" value="@signals[j + i].Type" />
+                        <div class="row" style="margin-top:10px">
+                            <div class="col-3">
+                                <strong>@signals[j + i].Name: </strong>
+                            </div>
+                            <div class="col-3">
+                                @{ _id = "values[" + @j.ToString() + "]";}
+                                <input style="width: 100%;" name=@_id min="0" class="form-control" max="250" type="number" title="@signals[j + i].Name" value="@signals[j + i].numValue" />
+                            </div>
+                        </div>
+
+                    </td>
+                }
+                else if (signals[j + i].Type == "submit")
+                {
+                    buttonName = signals[j + i].Name;
+                    string _id = "variableNames[" + @j.ToString() + "]";
+                    <input name=@_id type="hidden" title="@signals[j + i].Name" value="@signals[j + i].Key" />
+                    _id = "types[" + @j.ToString() + "]";
+                    <input name=@_id type="hidden" title="@signals[j + i].Name" value="submit" />
+                    _id = "values[" + @j.ToString() + "]";
+                    <input name=@_id type="hidden" title="@signals[j + i].Name" value="submit" />
+                }
+                else if (signals[j + i].Type == "int")
+                {
+                    <td style="margin-top:10px">
+                        @{ string _id = "variableNames[" + @j.ToString() + "]";}
+                        <input name=@_id type="hidden" title="@signals[j + i].Name" value="@signals[j + i].Key" />
+                        @{ _id = "types[" + @j.ToString() + "]";}
+                        <input name=@_id type="hidden" title="@signals[j + i].Name" value="@signals[j + i].Type" />
+                        <div class="row" style="margin-top:10px">
+                            <div class="col-3">
+                                <strong>@signals[j + i].Name: </strong>
+                            </div>
+                            <div class="col-3">
+                                @{ _id = "values[" + @j.ToString() + "]";}
+                                <input style="width: 100%;" name=@_id min="0" class="form-control" max="250" type="number" title="@signals[j + i].Name" value="@signals[j + i].intValue" />
+                            </div>
+                        </div>
+
+                    </td>
+                }
+                @if (signals[i].Devider)
+                {
+                    if (signals[i].Type == "bool")
+                    {
+                        <br />
+                    }
+                    <hr />
+                }
+                if (j + i + 1 == signals.Length || signals[j + i + 1].signalGroup != currentGroup)
+                { <div class="row">
+                        <div class="col-6"></div>
+                        <div class="col-2">
+                            @if (buttonName != null && buttonName != "")
+                            {
+                                <input style="width: 100%;" type="submit" value="@buttonName" class="btn btn-success btn-md" />
+                            }
+                            else
+                            {
+                                <input style="width: 100%;" type="submit" value="Set" class="btn btn-success btn-md" />
+                            }
+
+                        </div>
+                    </div>
+                    i = j + i;
+                    break;
+                }
+            }
+
+        }
+    }
+    else if (signals[i].Type == "bool")
+    {
+        <td>
+            @{
+                string _class = "btn btn-danger ";
+                if (signals[i].boolValue) _class = "btn btn-success ";
+                switch (signals[i].Size)
+                {
+                    case 1:
+                        _class += "btn-sm";
+                        break;
+                    case 2:
+                        _class += "btn-md";
+                        break;
+                    case 3:
+                        _class += "btn-lg";
+                        break;
+                    default:
+                        _class += "btn-sm";
+                        break;
+                }
+            }
+            <input style="width:50%; margin-top:2px;" class="@_class" type="button" value="@signals[i].Name = @signals[i].boolValue"
+                   onclick="location.href='@Url.Action("Toggle", "Home", new { variableName = signals[i].Key })'" />
+        </td>
+    }
+    else if (signals[i].Type == "string")
+    {
+
+        <td style="margin-top:10px">
+            @using (Html.BeginForm("SetStringValue", "Home", FormMethod.Post))
+            {
+                <input id="variableName" name="variableName" type="hidden" title="@signals[i].Name" value="@signals[i].Key" />
+                <div class="row" style="margin-top:10px">
+                    <div class="col-3">
+                        <strong>@signals[i].Name: </strong>
+                    </div>
+                    @if (signals[i].AllowedValues != null)
+                    {
+
+                        List<SelectListItem> list = new List<SelectListItem>();
+                        foreach (var pair in signals[i].AllowedValues)
+                        {
+                            list.Add(new SelectListItem()
+                            {
+                                Text = pair.Key,
+                                Value = pair.Value,
+                                Selected = pair.Value == signals[i].stringValue
+                            });
+                        }
+
+                        <div class="col-3">
+                            @Html.DropDownList("value", list, new { @id = @signals[i].Name, @class = "form-control", @value = @signals[i].stringValue })
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-3">
+                            <input style="width: 100%;" id="value" class="form-control" name="value" type="text" title="@signals[i].Name" value="@signals[i].stringValue" />
+                        </div>
+                    }
+
+                    <div class="col-2">
+                        <input style="width: 100%;" type="submit" value="Set" class="btn btn-success btn-md" />
+                    </div>
+                </div>
+
+            }
+        </td>
+    }
+    else if (signals[i].Type == "ushort")
+    {
+        <td style="margin-top:10px">
+            @if (signals[i].Controll == "readOnly")
+            {
+                <div class="row" style="margin-top:10px">
+                    <div class="col-3">
+                        <strong>@signals[i].Name: </strong>
+                    </div>
+                    <div class="col-3">
+                        <input style="width: 100%;" id="value" class="form-control" readonly name="value" min="0" max="250" type="number" title="@signals[i].Name" value="@signals[i].numValue" />
+                    </div>
+                </div>
+            }
+            else
+            {
+                @using (Html.BeginForm("SetNumValue", "Home", FormMethod.Post))
+                {
+                    <input id="variableName" name="variableName" type="hidden" title="@signals[i].Name" value="@signals[i].Key" />
+                    <div class="row" style="margin-top:10px">
+                        <div class="col-3">
+                            <strong>@signals[i].Name: </strong>
+                        </div>
+                        <div class="col-3">
+                            <input style="width: 100%;" id="value" class="form-control" name="value" min="0" max="250" type="number" title="@signals[i].Name" value="@signals[i].numValue" />
+                        </div>
+                        <div class="col-2">
+                            <input style="width: 100%;" type="submit" value="Set" class="btn btn-success btn-md" />
+                        </div>
+                    </div>
+
+                }
+            }
+        </td>
+    }
+    else if (signals[i].Type == "int")
+    {
+        <td style="margin-top:10px">
+            @if (signals[i].Controll == "readOnly")
+            {
+                <div class="row" style="margin-top:10px">
+                    <div class="col-3">
+                        <strong>@signals[i].Name: </strong>
+                    </div>
+                    <div class="col-3">
+                        <input style="width: 100%;" id="value" class="form-control" readonly name="value" min="0" max="250" type="number" title="@signals[i].Name" value="@signals[i].intValue" />
+                    </div>
+                </div>
+            }
+            else
+            {
+                @using (Html.BeginForm("SetIntValue", "Home", FormMethod.Post))
+                {
+                    <input id="variableName" name="variableName" type="hidden" title="@signals[i].Name" value="@signals[i].Key" />
+                    <div class="row" style="margin-top:10px">
+                        <div class="col-3">
+                            <strong>@signals[i].Name: </strong>
+                        </div>
+                        <div class="col-3">
+                            <input style="width: 100%;" id="value" class="form-control" name="value" min="0" max="250" type="number" title="@signals[i].Name" value="@signals[i].intValue" />
+                        </div>
+                        <div class="col-2">
+                            <input style="width: 100%;" type="submit" value="Set" class="btn btn-success btn-md" />
+                        </div>
+                    </div>
+
+                }
+            }
+
+        </td>
+    }
+    @if (signals[i].Devider)
+    {
+        if (signals[i].Type == "bool")
+        {
+            <br />
+        }
+        <hr />
+    }
+}
+
+
+
+

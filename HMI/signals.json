@@ -1,0 +1,302 @@
+{
+  "PLCSettings": {
+    "ip": "192.168.1.13",
+    "port": "4840",
+    "node": 4
+  },
+  "PLCSignals": {
+    "HMI_SuctionCup1": {
+      "Name": "Suction Cup 1",
+      "Type": "bool",
+      "Controll": "toggle",
+      "Sequence": 1,
+      "Label": "Suction Cups:"
+    },
+    "HMI_SuctionCup2": {
+      "Name": "Suction Cup 2",
+      "Type": "bool",
+      "Controll": "toggle",
+      "Sequence": 2
+    },
+    "HMI_SuctionCup3": {
+      "Name": "Suction Cup 3",
+      "Type": "bool",
+      "Controll": "toggle",
+      "Sequence": 3
+    },
+    "HMI_SuctionCup4": {
+      "Name": "Suction Cup 4",
+      "Type": "bool",
+      "Controll": "toggle",
+      "Sequence": 4
+    },
+    "HMI_VacuumPump": {
+      "Name": "Vacuum Pump",
+      "Type": "bool",
+      "Controll": "toggle",
+      "Sequence": 5,
+      "Devider": true
+    },
+    "Start_Test_Cycle": {
+      "Name": "Start test cycle",
+      "Type": "bool",
+      "Controll": "toggle",
+      "Sequence": 6
+    },
+    "bPreparation": {
+      "Name": "Delete order",
+      "Type": "bool",
+      "Controll": "toggle",
+      "Sequence": 7,
+      "Devider": true,
+      "Size": 3
+    },
+    "iwNumberOfElements": {
+      "Name": "Order place location",
+      "Type": "ushort",
+      "Controll": "set",
+      "Sequence": 8,
+      "Devider": true
+    },
+    "sOrderPartType": {
+      "Name": "Order part type",
+      "Type": "string",
+      "Controll": "set",
+      "Sequence": 9,
+      "Label": "Order cycle signals:",
+      "SignalGroup": 1,
+      "AllowedValues": {
+        "Doritos_tacoPepperFlavoured_100g": "Doritos_tacoPepperFlavoured_100g",
+        "BELiN_brzoskwiniaMango_40g": "BELiN_brzoskwiniaMango_40g",
+        "Alice_chusteczkiHigieniczne_10g": "Alice_chusteczkiHigieniczne_10g",
+        "GELLWE_slodkiKubekWisnia_30g": "GELLWE_slodkiKubekWisnia_30g",
+        "Kolorado_kostkaToaletowa_40g": "Kolorado_kostkaToaletowa_40g",
+        "CocaCola_puszkaWysoka_330ml": "CocaCola_puszkaWysoka_330ml",
+        "Goplana_grzeskiCzekoladowe_36g": "Goplana_grzeskiCzekoladowe_36g",
+        "DanCake_bulkiMaslane_180g": "DanCake_bulkiMaslane_180g",
+        "Mars_batonCzekoladowy_51g": "Mars_batonCzekoladowy_51g",
+        "LIGHT_wkladkiHigieniczne_30g": "LIGHT_wkladkiHigieniczne_30g",
+        "HARIBO_zloteMisie_175g": "HARIBO_zloteMisie_175g",
+        "ZywiecZdroj_WodaMinNiegaz_500ml": "ZywiecZdroj_WodaMinNiegaz_500ml",
+        "OrbitWhite_gumyDoZucia_35g": "OrbitWhite_gumyDoZucia_35g",
+        "VERYBERRY_creamySoap_100g": "VERYBERRY_creamySoap_100g",
+        "LCWanilia_balsamDoUst_5g": "LCWanilia_balsamDoUst_5g",
+        "DentalFloss_nicDentystyczna_12g": "DentalFloss_nicDentystyczna_12g",
+        "Steripan_plastryZOpatrunkiem_10g": "Steripan_plastryZOpatrunkiem_10g",
+        "bella_patyczkiHigieniczne_15g": "bella_patyczkiHigieniczne_15g",
+        "EVELINE_maseczka_10ml": "EVELINE_maseczka_10ml",
+        "Knorr_carbonaraDanieMakaron_55g": "Knorr_carbonaraDanieMakaron_55g",
+        "VIFON_lunchBoxKIMCHI_85g": "VIFON_lunchBoxKIMCHI_85g",
+        "Tymbark_jablkowy_330ml": "Tymbark_jablkowy_330ml",
+        "EWedel_czekoladaMleczna_100g": "EWedel_czekoladaMleczna_100g",
+        "COSMIA_mydlowplynie_250ml": "COSMIA_mydlowplynie_250ml",
+        "RISANA_ryzBialy4x100_400g": "RISANA_ryzBialy4x100_400g",
+        "Tymbark_pomaranczowy_330ml": "Tymbark_pomaranczowy_330ml",
+        "Hortex_leonTruskawkiWisnie_200ml": "Hortex_leonTruskawkiWisnie_200ml",
+        "Tymbark_musPomaranczowy_120g": "Tymbark_musPomaranczowy_120g",
+        "Kamill_menKremDoRak_75ml": "Kamill_menKremDoRak_75ml",
+        "KonjacField_mus_180g": "KonjacField_mus_180g",
+        "Nihonbashi_butterPeanut_88g": "Nihonbashi_butterPeanut_88g",
+        "NishimuraMangoroEggBolo_90g": "NishimuraMangoroEggBolo_90g",
+        "TengeSeika_breadProducts_40g": "TengeSeika_breadProducts_40g",
+        "TengeMaronAnpie_35g": "TengeMaronAnpie_35g",
+        "MorningBakedBaumkuchen_65g": "MorningBakedBaumkuchen_65g"
+      }
+    },
+    "iorderPickLocation": {
+      "Name": "Order pick location",
+      "Type": "ushort",
+      "Controll": "set",
+      "SignalGroup": 1,
+      "Sequence": 10
+    },
+    "sorderPickContainerId": {
+      "Name": "Order pick container Id",
+      "Type": "string",
+      "Controll": "set",
+      "SignalGroup": 1,
+      "Sequence": 11
+    },
+    "sorderPickContainerType": {
+      "Name": "Order pick container Type",
+      "Type": "string",
+      "Controll": "set",
+      "Sequence": 12,
+      "SignalGroup": 1,
+      "AllowedValues": {
+        "H21": "H21",
+        "H22": "H22",
+        "H31": "H31",
+        "H32": "H32",
+        "H33": "H33",
+        "L21": "L21",
+        "L22": "L22",
+        "L31": "L31",
+        "L32": "L32",
+        "L33": "L33"
+      }
+    },
+    "iorderPlaceLocation": {
+      "Name": "Order place location",
+      "Type": "ushort",
+      "Controll": "set",
+      "SignalGroup": 1,
+      "Sequence": 13
+    },
+    "sorderPlaceContainerId": {
+      "Name": "Order place container Id",
+      "Type": "string",
+      "Controll": "set",
+      "SignalGroup": 1,
+      "Sequence": 14
+    },
+    "sorderPlaceContainerType": {
+      "Name": "Order place container Type",
+      "Type": "string",
+      "Controll": "set",
+      "Sequence": 15,
+      "SignalGroup": 1,
+      "AllowedValues": {
+        "H21": "H21",
+        "H22": "H22",
+        "H31": "H31",
+        "H32": "H32",
+        "H33": "H33",
+        "L21": "L21",
+        "L22": "L22",
+        "L31": "L31",
+        "L32": "L32",
+        "L33": "L33"
+      }
+    },
+    "iorderNumber": {
+      "Name": "Number of ordered parts",
+      "Type": "ushort",
+      "Controll": "set",
+      "Sequence": 16,
+      "SignalGroup": 1,
+      "Devider": true
+    },
+    "bSequenceTest": {
+      "Name": "Add Order",
+      "Type": "submit",
+      "SignalGroup": 1,
+      "Controll": "toggle",
+      "Sequence": 17,
+      "Devider": true
+    },
+    "sPreparationPartType": {
+      "Name": "Preparation part type",
+      "Type": "string",
+      "Controll": "set",
+      "SignalGroup": 2,
+      "Sequence": 18,
+      "Label": "Preparation cycle signals:",
+      "AllowedValues": {
+        "Doritos_tacoPepperFlavoured_100g": "Doritos_tacoPepperFlavoured_100g",
+        "BELiN_brzoskwiniaMango_40g": "BELiN_brzoskwiniaMango_40g",
+        "Alice_chusteczkiHigieniczne_10g": "Alice_chusteczkiHigieniczne_10g",
+        "GELLWE_slodkiKubekWisnia_30g": "GELLWE_slodkiKubekWisnia_30g",
+        "Kolorado_kostkaToaletowa_40g": "Kolorado_kostkaToaletowa_40g",
+        "CocaCola_puszkaWysoka_330ml": "CocaCola_puszkaWysoka_330ml",
+        "Goplana_grzeskiCzekoladowe_36g": "Goplana_grzeskiCzekoladowe_36g",
+        "DanCake_bulkiMaslane_180g": "DanCake_bulkiMaslane_180g",
+        "Mars_batonCzekoladowy_51g": "Mars_batonCzekoladowy_51g",
+        "LIGHT_wkladkiHigieniczne_30g": "LIGHT_wkladkiHigieniczne_30g",
+        "HARIBO_zloteMisie_175g": "HARIBO_zloteMisie_175g",
+        "ZywiecZdroj_WodaMinNiegaz_500ml": "ZywiecZdroj_WodaMinNiegaz_500ml",
+        "OrbitWhite_gumyDoZucia_35g": "OrbitWhite_gumyDoZucia_35g",
+        "VERYBERRY_creamySoap_100g": "VERYBERRY_creamySoap_100g",
+        "LCWanilia_balsamDoUst_5g": "LCWanilia_balsamDoUst_5g",
+        "DentalFloss_nicDentystyczna_12g": "DentalFloss_nicDentystyczna_12g",
+        "Steripan_plastryZOpatrunkiem_10g": "Steripan_plastryZOpatrunkiem_10g",
+        "bella_patyczkiHigieniczne_15g": "bella_patyczkiHigieniczne_15g",
+        "EVELINE_maseczka_10ml": "EVELINE_maseczka_10ml",
+        "Knorr_carbonaraDanieMakaron_55g": "Knorr_carbonaraDanieMakaron_55g",
+        "VIFON_lunchBoxKIMCHI_85g": "VIFON_lunchBoxKIMCHI_85g",
+        "Tymbark_jablkowy_330ml": "Tymbark_jablkowy_330ml",
+        "EWedel_czekoladaMleczna_100g": "EWedel_czekoladaMleczna_100g",
+        "COSMIA_mydlowplynie_250ml": "COSMIA_mydlowplynie_250ml",
+        "RISANA_ryzBialy4x100_400g": "RISANA_ryzBialy4x100_400g",
+        "Tymbark_pomaranczowy_330ml": "Tymbark_pomaranczowy_330ml",
+        "Hortex_leonTruskawkiWisnie_200ml": "Hortex_leonTruskawkiWisnie_200ml",
+        "Tymbark_musPomaranczowy_120g": "Tymbark_musPomaranczowy_120g",
+        "Kamill_menKremDoRak_75ml": "Kamill_menKremDoRak_75ml"
+      }
+    },
+    "ipreparationPickLocation": {
+      "Name": "Preparation pick location",
+      "Type": "ushort",
+      "Controll": "set",
+      "SignalGroup": 2,
+      "Sequence": 19
+    },
+    "sPreparationPickContainerId": {
+      "Name": "Preparation pick container Id",
+      "Type": "string",
+      "Controll": "set",
+      "SignalGroup": 2,
+      "Sequence": 20
+    },
+    "spreparationPickContainerType": {
+      "Name": "Preparation pick container Type",
+      "Type": "string",
+      "Controll": "set",
+      "Sequence": 21,
+      "SignalGroup": 2,
+      "AllowedValues": {
+        "H21": "H21",
+        "H22": "H22",
+        "H31": "H31",
+        "H32": "H32",
+        "H33": "H33",
+        "L21": "L21",
+        "L22": "L22",
+        "L31": "L31",
+        "L32": "L32",
+        "L33": "L33"
+      }
+    },
+    "ipreparationPlaceLocation": {
+      "Name": "Preparation place location",
+      "Type": "ushort",
+      "Controll": "set",
+      "SignalGroup": 2,
+      "Sequence": 22
+    },
+    "spreparationPlaceContainerId": {
+      "Name": "Preparation place container Id",
+      "Type": "string",
+      "Controll": "set",
+      "SignalGroup": 2,
+      "Sequence": 23
+    },
+    "spreparationPlaceContainerType": {
+      "Name": "Preparation place container Type",
+      "Type": "string",
+      "Controll": "set",
+      "Sequence": 24,
+      "SignalGroup": 2,
+      "AllowedValues": {
+        "H21": "H21",
+        "H22": "H22",
+        "H31": "H31",
+        "H32": "H32",
+        "H33": "H33",
+        "L21": "L21",
+        "L22": "L22",
+        "L31": "L31",
+        "L32": "L32",
+        "L33": "L33"
+      }
+    },
+    "ipreparationOrderNumber": {
+      "Name": "Number of ordered parts for preparation",
+      "Type": "ushort",
+      "Controll": "set",
+      "Sequence": 25,
+      "SignalGroup": 2,
+      "Devider": true
+    }
+  }
+}

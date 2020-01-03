@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Edit signals";
+}
+<br />
+<h1>Edit signals</h1>
+<br />
+
+@{
+    string content = System.IO.File.ReadAllText("signals.json");
+}
+
+
+
+
+@using (Html.BeginForm("SaveSignals", "EditSignals", FormMethod.Post))
+{
+    @Html.TextArea("fileContent", content, 20, 150, null)
+    <div><input style="width: 100%;" type="submit" value="Save" class="btn btn-success btn-md" /></div>
+
+}
